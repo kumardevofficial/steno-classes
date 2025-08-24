@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FaShoppingCart, FaBell, FaBars, FaTimes } from "react-icons/fa";
 import { FiPhone } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -49,7 +50,7 @@ export default function Navbar() {
             </span>
           </button>
           <button className="bg-blue-900 text-white px-4 py-2 rounded">
-            Login / Register
+           <Link to="login"> Login / Register</Link>
           </button>
         </div>
 
@@ -63,7 +64,7 @@ export default function Navbar() {
 
       {/* Bottom Nav (Desktop) */}
       <div className="hidden md:flex justify-center gap-6 py-2 border-t text-sm font-medium">
-        <a href="#" className="text-blue-900 border-b-2 border-blue-900 pb-1">Home</a>
+        <Link to="/"className="text-blue-900 border-b-2 border-blue-900 pb-1">Home</Link>
         <a href="#">Courses</a>
         <a href="#">Practice</a>
         <a href="#">Current Affairs</a>
@@ -90,11 +91,12 @@ export default function Navbar() {
             <FaBell className="text-blue-800" /> Notifications
           </button>
           <button className="bg-blue-900 text-white px-4 py-2 rounded">
-            Login / Register
+           <Link to="login"> Login / Register</Link>
           </button>
 
           <div className="flex flex-col gap-2 mt-3 border-t pt-3">
-            <a href="#" className="text-blue-900">Home</a>
+             {/* <Link to="/"className="text-blue-900 border-b-2 border-blue-900 pb-1">Home</Link> */}
+            <Link to="/" className="text-blue-900">Home</Link>
             <a href="#">Courses</a>
             <a href="#">Practice</a>
             <a href="#">Current Affairs</a>
