@@ -29,7 +29,7 @@ export default function Slider() {
   };
 
   return (
-    <div className="relative w-full h-[300px] md:h-[500px] overflow-hidden">
+    <div className="relative w-full h-[400px] md:h-[500px] overflow-hidden">
       {/* Images */}
       <div
         className="flex transition-transform duration-700 ease-in-out"
