@@ -1,15 +1,11 @@
 import { useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import shorthandBook from "../assets/Miller.png"
-import courseEnglish from "../assets/courseEnglish.jpg"
-import hindicourse from "../assets/hindicourse.png"
-export default function Slider() {
-  const images = [
-    shorthandBook,
-    courseEnglish,
-    hindicourse,
-  ];
+import shorthandBook from "../assets/Miller.png";
+import courseEnglish from "../assets/courseEnglish.jpg";
+import hindicourse from "../assets/hindicourse.png";
 
+export default function Slider() {
+  const images = [shorthandBook, courseEnglish, hindicourse];
   const [current, setCurrent] = useState(0);
 
   // Auto slide
@@ -29,7 +25,7 @@ export default function Slider() {
   };
 
   return (
-    <div className="relative w-full h-[400px] md:h-[500px] overflow-hidden">
+    <div className="relative w-full overflow-hidden">
       {/* Images */}
       <div
         className="flex transition-transform duration-700 ease-in-out"
@@ -40,26 +36,26 @@ export default function Slider() {
             key={index}
             src={img}
             alt={`slide-${index}`}
-            className="w-full flex-shrink-0 object-cover"
+            className="w-full flex-shrink-0 h-[250px] sm:h-[350px] md:h-[500px] object-cover"
           />
         ))}
       </div>
 
-      {/* Left Button */}
-      <button
-        onClick={prevSlide}
-        className="absolute top-1/2 left-4 -translate-y-1/2 bg-white text-gray-700 p-3 rounded-full shadow-md hover:bg-gray-200"
-      >
-        <FaChevronLeft size={20} />
-      </button>
-
-      {/* Right Button */}
-      <button
-        onClick={nextSlide}
-        className="absolute top-1/2 right-4 -translate-y-1/2 bg-white text-gray-700 p-3 rounded-full shadow-md hover:bg-gray-200"
-      >
-        <FaChevronRight size={20} />
-      </button>
+      {/* Left & Right Buttons */}
+      <div className="absolute inset-0 flex items-center justify-between px-4">
+        <button
+          onClick={prevSlide}
+          className="bg-white text-gray-700 p-3 rounded-full shadow-md hover:bg-gray-200"
+        >
+          <FaChevronLeft size={20} />
+        </button>
+        <button
+          onClick={nextSlide}
+          className="bg-white text-gray-700 p-3 rounded-full shadow-md hover:bg-gray-200"
+        >
+          <FaChevronRight size={20} />
+        </button>
+      </div>
 
       {/* Dots Indicator */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
@@ -67,7 +63,7 @@ export default function Slider() {
           <div
             key={index}
             onClick={() => setCurrent(index)}
-            className={`w-3 h-3 rounded-full cursor-pointer ${
+            className={`w-3 h-3 rounded-full cursor-pointer transition-all duration-300 ${
               current === index ? "bg-blue-600" : "bg-gray-300"
             }`}
           ></div>
