@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import shorthandBook from "../assets/Miller.png";
-import courseEnglish from "../assets/courseEnglish.jpg";
+import courseEnglish from "../assets/courseEnglish.png";
 import hindicourse from "../assets/hindicourse.png";
 
 export default function Slider() {
