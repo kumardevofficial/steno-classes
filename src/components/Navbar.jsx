@@ -17,7 +17,7 @@ export default function Navbar() {
           {/* Text block */}
           <div className="flex flex-col leading-tight">
             <h1 className="text-lg md:text-xl font-bold text-blue-900">
-              Shridhan Shorthand Academy
+              Sridhan Shorthand Academy
             </h1>
             <span className="hidden md:block text-sm text-gray-500">
               Excellence in Learning
