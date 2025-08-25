@@ -1,28 +1,29 @@
 import { useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import bear from "../assets/bear.jpg"
+import cls from "../assets/cls1.png"
 
 export default function PopularCourses() {
   const courses = [
     {
       id: 1,
-      img:bear,
+      img:cls,
     },
     {
       id: 2,
-      img: bear,
+      img: cls,
     },
     {
       id: 3,
-      img: bear,
+      img: cls,
     },
     {
       id: 4,
-      img: bear,
+      img: cls,
     },
     {
       id: 5,
-      img: bear,
+      img: cls,
     },
   ];
 

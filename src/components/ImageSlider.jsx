@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-
+import shorthandBook from "../assets/Miller.png"
+import courseEnglish from "../assets/courseEnglish.jpg"
+import hindicourse from "../assets/hindicourse.png"
 export default function Slider() {
   const images = [
-    "https://picsum.photos/id/1018/1600/600",
-    "https://picsum.photos/id/1015/1600/600",
-    "https://picsum.photos/id/1019/1600/600",
-    "https://picsum.photos/id/1020/1600/600",
-    "https://picsum.photos/id/1021/1600/600",
+    shorthandBook,
+    courseEnglish,
+    hindicourse,
   ];
 
   const [current, setCurrent] = useState(0);
