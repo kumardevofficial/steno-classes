@@ -1,31 +1,79 @@
-import { FaRegClock } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import CourseCard from "./CourseCard";
+import clsimg from "../../../assets/cls1.png"
 
-export default function CoursePage() {
+
+
+function Courses() {
+  const courses = [
+    {
+      id: 1,
+      title: "UPSC G.S (Prelims+Mains) Foundation Programme 2026 English Medium",
+      startDate: "09 Sep 2025",
+      endDate: "09 Sep 2027",
+      price: 79500,
+      oldPrice: 100000,
+      status: "Offline",
+      image:clsimg,
+    },
+    {
+      id: 2,
+      title: "SSC CGL 2025 Complete Course (English Medium)",
+      startDate: "01 Jan 2025",
+      endDate: "01 Jan 2026",
+      price: 24999,
+      oldPrice: 30000,
+      status: "Online",
+      image: clsimg,
+    },
+    {
+      id: 3,
+      title: "Banking (IBPS + SBI + RBI) Mega Batch 2025",
+      startDate: "15 Feb 2025",
+      endDate: "15 Feb 2026",
+      price: 19999,
+      oldPrice: 25000,
+      status: "Online",
+      image: clsimg,
+    },
+    {
+      id: 4,
+      title: "Railway NTPC + Group D Crash Course 2025",
+      startDate: "10 Mar 2025",
+      endDate: "10 Mar 2026",
+      price: 14999,
+      oldPrice: 20000,
+      status: "Offline",
+      image: clsimg,
+    },
+    {
+      id: 5,
+      title: "Defence (NDA + CDS + AFCAT) 2025 Full Course",
+      startDate: "20 Apr 2025",
+      endDate: "20 Apr 2026",
+      price: 17999,
+      oldPrice: 22000,
+      status: "Online",
+      image: clsimg,
+    },
+  ];
+
   return (
-    <div className="flex items-center justify-center min-h-screen bg-white">
-      <div className="text-center max-w-lg p-8">
-        <div className="flex justify-center mb-6">
-          <div className="p-6 bg-indigo-100 rounded-full shadow-md">
-            <FaRegClock className="text-indigo-600 text-5xl" />
-          </div>
-        </div>
 
-        <h1 className="text-3xl font-bold text-gray-800 mb-3">
-          Work in Progress
+    <div className="min-h-screen bg-gray-100 p-6">
+      <div className="max-w-7xl mx-auto">
+        <h1 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-6">
+          Our Courses
         </h1>
-        <p className="text-gray-600 text-lg">
-          We’re working hard to bring you this course.  
-          Please check back soon for updates.
-        </p>
 
-        <div className="mt-8">
-          <Link to="/" className="px-6 py-2 bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-700 transition">
-            Go Back Home
-          </Link>
-          
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {courses.map((course) => (
+            <CourseCard key={course.id} {...course} />
+          ))}
         </div>
       </div>
     </div>
+
   );
 }
+
+export default Courses;

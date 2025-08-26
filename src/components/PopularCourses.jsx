@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import bear from "../assets/bear.jpg"
 import cls from "../assets/cls1.png"
+import { Link } from "react-router-dom";
 
 export default function PopularCourses() {
   const courses = [
@@ -89,10 +90,11 @@ export default function PopularCourses() {
 
       {/* Explore Button */}
       <div className="flex justify-end mt-6">
-        <button className="bg-indigo-50 text-indigo-700 px-6 py-2 rounded-lg shadow hover:bg-indigo-100">
+        <Link to="courses" className="bg-indigo-50 text-indigo-700 px-6 py-2 rounded-lg shadow hover:bg-indigo-100">
           Explore Courses
-        </button>
+        </Link>
       </div>
+      
     </div>
   );
 }
