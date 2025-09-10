@@ -1,5 +1,9 @@
 import CourseCard from "./CourseCard";
-import clsimg from "../../../assets/cls1.png"
+// import clsimg from "../../../assets/cls1.png"
+import cls from "../../../assets/cls1.png";
+import hinditp from "../../../assets/hinditp.png";
+import englishtp from "../../../assets/englishtp.png";
+import hindish from "../../../assets/hindish.png";
 
 
 
@@ -13,7 +17,7 @@ function Courses() {
       price: 79500,
       oldPrice: 100000,
       status: "Offline",
-      image:clsimg,
+      image:cls,
     },
     {
       id: 2,
@@ -23,7 +27,7 @@ function Courses() {
       price: 24999,
       oldPrice: 30000,
       status: "Online",
-      image: clsimg,
+      image: hinditp,
     },
     {
       id: 3,
@@ -33,7 +37,7 @@ function Courses() {
       price: 19999,
       oldPrice: 25000,
       status: "Online",
-      image: clsimg,
+      image: hindish,
     },
     {
       id: 4,
@@ -43,17 +47,7 @@ function Courses() {
       price: 14999,
       oldPrice: 20000,
       status: "Offline",
-      image: clsimg,
-    },
-    {
-      id: 5,
-      title: "Defence (NDA + CDS + AFCAT) 2025 Full Course",
-      startDate: "20 Apr 2025",
-      endDate: "20 Apr 2026",
-      price: 17999,
-      oldPrice: 22000,
-      status: "Online",
-      image: clsimg,
+      image: englishtp,
     },
   ];
 
