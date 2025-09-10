@@ -11,7 +11,7 @@ function Courses() {
   const courses = [
     {
       id: 1,
-      title: "UPSC G.S (Prelims+Mains) Foundation Programme 2026 English Medium",
+      title: "English Shorthand Classes",
       startDate: "09 Sep 2025",
       endDate: "09 Sep 2027",
       price: 79500,
@@ -21,7 +21,7 @@ function Courses() {
     },
     {
       id: 2,
-      title: "SSC CGL 2025 Complete Course (English Medium)",
+      title: "Hindi Typing Classes ( mangal & Krutidev)",
       startDate: "01 Jan 2025",
       endDate: "01 Jan 2026",
       price: 24999,
@@ -31,7 +31,7 @@ function Courses() {
     },
     {
       id: 3,
-      title: "Banking (IBPS + SBI + RBI) Mega Batch 2025",
+      title: "Hindi Shorthand Classes",
       startDate: "15 Feb 2025",
       endDate: "15 Feb 2026",
       price: 19999,
@@ -41,7 +41,7 @@ function Courses() {
     },
     {
       id: 4,
-      title: "Railway NTPC + Group D Crash Course 2025",
+      title: "English Typing classes",
       startDate: "10 Mar 2025",
       endDate: "10 Mar 2026",
       price: 14999,
