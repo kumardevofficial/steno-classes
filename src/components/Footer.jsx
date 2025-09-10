@@ -1,10 +1,32 @@
 import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { FaArrowUp } from "react-icons/fa";   // ✅ Added
+import { useEffect, useState } from "react";  // ✅ Added
 import weblogo from "../assets/logo.png"
 
 export default function Footer() {
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Check if user has reached the bottom (footer visible)
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 50) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <footer className="bg-gray-900 text-gray-300 pt-10">
+    <footer className="bg-gray-900 text-gray-300 pt-10 relative">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
         {/* Logo + About */}
         <div>
@@ -31,7 +53,6 @@ export default function Footer() {
           </ul>
         </div>
         
-
         {/* Support */}
         <div>
           <h3 className="text-lg font-semibold text-white mb-4">Support</h3>
@@ -68,6 +89,16 @@ export default function Footer() {
       <div className="mt-10 border-t border-gray-700 py-4 text-center text-sm text-gray-400">
         © {new Date().getFullYear()} Shirdha Shorthand Classes. All rights reserved.
       </div>
+
+      {/* 🔼 Scroll To Top Button */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 bg-gray-700 hover:bg-gray-600 text-white p-3 rounded-full opacity-70 hover:opacity-100 transition"
+        >
+          <FaArrowUp />
+        </button>
+      )}
     </footer>
   );
 }

@@ -1,29 +1,24 @@
-import { FaRegClock } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import CurrentAffairsMenu from "./CurrentAffairMenu";
+import CurrentAffairsQA from "./CurrentAffairQa";
+import LatestPosts from "./LatestPost";
 
 export default function CurrentAffairs() {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-white">
-      <div className="text-center max-w-lg p-8">
-        <div className="flex justify-center mb-6">
-          <div className="p-6 bg-indigo-100 rounded-full shadow-md">
-            <FaRegClock className="text-indigo-600 text-5xl" />
-          </div>
+    <div className="container mx-auto p-4">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        {/* Left Menu */}
+        <div className="md:col-span-1">
+          <CurrentAffairsMenu />
         </div>
 
-        <h1 className="text-3xl font-bold text-gray-800 mb-3">
-          Work in Progress
-        </h1>
-        <p className="text-gray-600 text-lg">
-          We’re working hard to bring you this Page.  
-          Please check back soon for updates.
-        </p>
+        {/* Main Q&A Section */}
+        <div className="md:col-span-2">
+          <CurrentAffairsQA />
+        </div>
 
-        <div className="mt-8">
-          <Link to="/" className="px-6 py-2 bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-700 transition">
-            Go Back Home
-          </Link>
-          
+        {/* Right Sidebar */}
+        <div className="md:col-span-1">
+          <LatestPosts />
         </div>
       </div>
     </div>

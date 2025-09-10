@@ -1,12 +1,32 @@
 // import React, { useState, useEffect } from "react";
 
 // const TypingTest = () => {
-//   const sampleText =
-//     "The quick brown fox jumps over the lazy dog. Practice makes perfect!";
+//   const [sampleText, setSampleText] = useState("");
 //   const [userInput, setUserInput] = useState("");
 //   const [correctCount, setCorrectCount] = useState(0);
 //   const [wrongCount, setWrongCount] = useState(0);
+//   const [loading, setLoading] = useState(true);
 
+//   // ✅ Fetch paragraph from API
+//   useEffect(() => {
+//     const fetchText = async () => {
+//       try {
+//         // Example: free quotes API (you can replace with your own endpoint)
+//         const res = await fetch("https://api.quotable.io/random?minLength=100&maxLength=200");
+//         const data = await res.json();
+//         setSampleText(data.content); // use API content
+//         setLoading(false);
+//       } catch (error) {
+//         console.error("Error fetching text:", error);
+//         setSampleText("Failed to load passage. Please try again.");
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchText();
+//   }, []);
+
+//   // ✅ Check correct/wrong characters
 //   useEffect(() => {
 //     let correct = 0;
 //     let wrong = 0;
@@ -22,6 +42,14 @@
 //     setCorrectCount(correct);
 //     setWrongCount(wrong);
 //   }, [userInput, sampleText]);
+
+//   if (loading) {
+//     return (
+//       <div className="min-h-screen flex items-center justify-center text-xl text-gray-600">
+//         Loading passage...
+//       </div>
+//     );
+//   }
 
 //   return (
 //     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">

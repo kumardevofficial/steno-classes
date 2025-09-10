@@ -1,42 +1,46 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import bear from "../assets/bear.jpg"
-import cls from "../assets/cls1.png"
 import { Link } from "react-router-dom";
+
+import cls from "../assets/cls1.png";
+import hinditp from "../assets/hinditp.png";
+import englishtp from "../assets/englishtp.png";
+import hindish from "../assets/hindish.png";
 
 export default function PopularCourses() {
   const courses = [
-    {
-      id: 1,
-      img:cls,
-    },
-    {
-      id: 2,
-      img: cls,
-    },
-    {
-      id: 3,
-      img: cls,
-    },
-    {
-      id: 4,
-      img: cls,
-    },
-    {
-      id: 5,
-      img: cls,
-    },
+    { id: 1, img: cls },
+    { id: 2, img: hindish },
+    { id: 3, img: englishtp },
+    { id: 4, img: hinditp },
   ];
 
   const [current, setCurrent] = useState(0);
+  const [slidesToShow, setSlidesToShow] = useState(1);
+
+  // Update slidesToShow based on window width (responsive)
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) setSlidesToShow(4);
+      else if (window.innerWidth >= 640) setSlidesToShow(2);
+      else setSlidesToShow(1);
+    };
+
+    handleResize(); // initial check
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const nextSlide = () => {
-    if (current < courses.length - 1) setCurrent(current + 1);
+    setCurrent((prev) => (prev + 1) % courses.length);
   };
 
   const prevSlide = () => {
-    if (current > 0) setCurrent(current - 1);
+    setCurrent((prev) => (prev - 1 + courses.length) % courses.length);
   };
+
+  // Calculate translate percentage based on slidesToShow
+  const translatePercentage = (current * 100) / slidesToShow;
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-10">
@@ -52,12 +56,18 @@ export default function PopularCourses() {
         <div className="overflow-hidden">
           <div
             className="flex transition-transform duration-500"
-            style={{ transform: `translateX(-${current * 100}%)` }}
+            style={{ transform: `translateX(-${translatePercentage}%)` }}
           >
             {courses.map((course) => (
               <div
                 key={course.id}
-                className="min-w-full sm:min-w-[50%] lg:min-w-[25%] p-2"
+                className={`p-2 ${
+                  slidesToShow === 1
+                    ? "min-w-full"
+                    : slidesToShow === 2
+                    ? "min-w-1/2"
+                    : "min-w-1/4"
+                }`}
               >
                 <div className="bg-white rounded-lg shadow-md overflow-hidden">
                   <img
@@ -90,11 +100,13 @@ export default function PopularCourses() {
 
       {/* Explore Button */}
       <div className="flex justify-end mt-6">
-        <Link to="courses" className="bg-indigo-50 text-indigo-700 px-6 py-2 rounded-lg shadow hover:bg-indigo-100">
+        <Link
+          to="courses"
+          className="bg-indigo-50 text-indigo-700 px-6 py-2 rounded-lg shadow hover:bg-indigo-100"
+        >
           Explore Courses
         </Link>
       </div>
-      
     </div>
   );
 }

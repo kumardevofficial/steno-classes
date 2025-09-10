@@ -14,7 +14,7 @@ export default function Navbar() {
     { path: "practice", label: "Practice" },
     { path: "current-affairs", label: "Current Affairs" },
     { path: "askdoubt", label: "Ask Doubt" },
-    { path: "test-series", label: "Test Series" },
+    { path: "latest-vacancy", label: "New Vacancy" },
     { path: "study-materials", label: "Study Materials" },
   ];
 
