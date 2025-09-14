@@ -1,86 +1,110 @@
-import { Star } from "lucide-react";
+import React from "react";
 
-const companies = [
+// your jobs data stays here
+const jobs = [
   {
     id: 1,
-    name: "NetApp",
-    logo: "https://1000logos.net/wp-content/uploads/2021/08/NetApp-logo.png",
-    rating: 3.7,
-    reviews: "401 reviews",
-    tags: ["Software Product", "IT Services & Consulting"],
+    department: "SSC",
+    post: "Stenographer Grade C & D",
+    vacancies: 1200,
+    qualification: "12th Pass",
+    startDate: "01 Sept 2025",
+    endDate: "30 Sept 2025",
   },
   {
     id: 2,
-    name: "Tata Technologies",
-    logo: "https://upload.wikimedia.org/wikipedia/en/thumb/f/fc/Tata_Technologies_Logo.svg/512px-Tata_Technologies_Logo.svg.png",
-    rating: 3.5,
-    reviews: "2.9K+ reviews",
-    tags: ["IT Services & Consulting", "Conglomerate", "Foreign MNC"],
+    department: "RRB",
+    post: "Junior Stenographer",
+    vacancies: 450,
+    qualification: "12th Pass + Typing",
+    startDate: "20 Sept 2025",
+    endDate: "15 Oct 2025",
   },
   {
     id: 3,
-    name: "IQor",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/7/73/IQor_logo.png",
-    rating: 3.4,
-    reviews: "943 reviews",
-    tags: ["IT Services & Consulting", "BPM / BPO", "Foreign MNC", "B2B"],
-  },
-  {
-    id: 4,
-    name: "Collins Aerospace",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Collins_Aerospace_logo.svg/512px-Collins_Aerospace_logo.svg.png",
-    rating: 3.8,
-    reviews: "894 reviews",
-    tags: ["Defence & Aerospace", "Foreign MNC", "B2B", "Private"],
+    department: "High Court",
+    post: "Personal Assistant (Steno)",
+    vacancies: 75,
+    qualification: "Graduate + Steno",
+    startDate: "05 Sept 2025",
+    endDate: "25 Sept 2025",
   },
 ];
 
-const JobCard = () => {
+export default function JobCard({ jobselction }) {
+  const deptMap = {
+    1: "SSC",
+    2: "RRB",
+    3: "High Court",
+    4: "PSC",
+    5: "UPSC",
+    6: "Central Dept",
+  };
+
+  // filter jobs based on selection
+  const filteredJobs =
+    jobselction == 0
+      ? jobs
+      : jobs.filter((job) => job.department === deptMap[jobselction]);
+
   return (
-    <div className="w-full bg-gray-50 py-10">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {companies.map((company) => (
+    <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 p-6">
+      {filteredJobs.length === 0 ? (
+        <div className="col-span-full text-center p-6 bg-gray-100 border rounded-2xl">
+          <p className="text-gray-700 font-medium">
+            No jobs available for this category
+          </p>
+        </div>
+      ) : (
+        filteredJobs.map((job) => (
           <div
-            key={company.id}
-            className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 flex flex-col items-center hover:shadow-lg transition"
+            key={job.id}
+            className="group relative rounded-3xl bg-gray-50 border border-gray-200 shadow-md hover:shadow-2xl transition-all duration-300"
           >
-            {/* Logo */}
-            <div className="w-16 h-16 flex items-center justify-center mb-4">
-              <img
-                src={company.logo}
-                alt={company.name}
-                className="w-12 h-12 object-contain"
-              />
+            {/* Top ribbon */}
+            <div className="absolute top-0 right-0 bg-blue-700 text-white text-xs font-semibold px-3 py-1 rounded-bl-3xl">
+              #{job.id}
             </div>
 
-            {/* Name */}
-            <h3 className="font-semibold text-gray-900 text-lg mb-2">
-              {company.name}
-            </h3>
-
-            {/* Rating & Reviews */}
-            <div className="flex items-center gap-1 text-sm text-gray-600 mb-3">
-              <Star size={16} className="text-yellow-500 fill-yellow-500" />
-              <span className="font-medium">{company.rating}</span>
-              <span>| {company.reviews}</span>
+            {/* Header */}
+            <div className="bg-blue-700 text-white rounded-t-3xl p-5">
+              <h2 className="text-xl font-bold leading-tight group-hover:scale-105 transform transition">
+                {job.post}
+              </h2>
+              <p className="text-sm opacity-80">{job.department}</p>
             </div>
 
-            {/* Tags */}
-            <div className="flex flex-wrap justify-center gap-2">
-              {company.tags.map((tag, index) => (
-                <span
-                  key={index}
-                  className="px-3 py-1 text-sm border rounded-full text-gray-600 border-gray-300 bg-gray-50"
-                >
-                  {tag}
+            {/* Body */}
+            <div className="p-5 space-y-2">
+              <p className="flex justify-between text-sm text-gray-700">
+                <span className="font-medium">Vacancies:</span>
+                <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full text-xs font-semibold">
+                  {job.vacancies}
                 </span>
-              ))}
+              </p>
+              <p className="flex justify-between text-sm text-gray-700">
+                <span className="font-medium">Qualification:</span>
+                <span>{job.qualification}</span>
+              </p>
+              <div className="flex justify-between text-sm text-gray-700">
+                <span className="font-medium">Start:</span>
+                <span>{job.startDate}</span>
+              </div>
+              <div className="flex justify-between text-sm text-gray-700">
+                <span className="font-medium">End:</span>
+                <span>{job.endDate}</span>
+              </div>
+            </div>
+
+            {/* Button */}
+            <div className="p-5 pt-0">
+              <button className="w-full bg-blue-700 text-white font-medium py-2.5 rounded-xl hover:bg-blue-800 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                View Details
+              </button>
             </div>
           </div>
-        ))}
-      </div>
+        ))
+      )}
     </div>
   );
-};
-
-export default JobCard;
+}

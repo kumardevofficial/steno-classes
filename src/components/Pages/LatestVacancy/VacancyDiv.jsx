@@ -2,30 +2,31 @@ import { useState } from "react";
 
 const categories = [
   "All",
-  "IT Services",
-  "Technology",
-  "Healthcare & Life Sciences",
-  "Manufacturing & Production",
-  "Infrastructure, Transport & Real Estate",
-  "BFSI",
+  "SSC",
+  "RRB",
+  "High Court",
+  "PSC",
+  "UPSC",
+  "Central Dept",
 ];
 
-const JobFilter = () => {
+
+const JobFilter = ({jobfilter}) => {
   const [selected, setSelected] = useState("All");
 
   return (
     <div className="w-full flex flex-col items-center py-8 bg-white">
       {/* Title */}
       <h2 className="text-xl font-bold text-gray-900 mb-6">
-        Sponsored companies
+        Stenographer Vacancy By Department
       </h2>
 
       {/* Filter buttons */}
       <div className="flex flex-wrap justify-center gap-3">
-        {categories.map((cat) => (
+        {categories.map((cat, index) => (
           <button
             key={cat}
-            onClick={() => setSelected(cat)}
+            onClick={() => {setSelected(cat); jobfilter(index)}}
             className={`px-4 py-2 rounded-full border transition 
               ${
                 selected === cat
@@ -38,9 +39,9 @@ const JobFilter = () => {
         ))}
 
         {/* "+ more" button */}
-        <button className="px-4 py-2 rounded-full border border-gray-300 text-gray-600 hover:border-blue-400 hover:text-blue-500">
+        {/* <button className="px-4 py-2 rounded-full border border-gray-300 text-gray-600 hover:border-blue-400 hover:text-blue-500">
           +4 more
-        </button>
+        </button> */}
       </div>
     </div>
   );
